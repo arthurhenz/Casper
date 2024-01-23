@@ -1,54 +1,161 @@
-{{!< default}}
-{{!-- The tag above means: insert everything in this file
-into the {body} of the default.hbs template --}}
+{{!< default}} <!DOCTYPE html>
+    <html lang="{{@site.locale}}" {{#match @custom.color_scheme "Dark" }} class="dark-mode" {{else match
+        @custom.color_scheme "Auto" }} class="auto-color" {{/match}}>
 
-<div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
+    <head>
 
-    {{#if @custom.show_publication_cover}}
+        {{!-- Basic meta - advanced meta is output with {ghost_head} below --}}
+        <title>{{meta_title}}</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {{!-- Preload scripts --}}
+        <link rel="preload" as="style" href="{{asset " built/screen.css"}}" />
+        <link rel="preload" as="script" href="{{asset " built/casper.js"}}" />
+
+        {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
+        this will take care of caching and cache-busting automatically --}}
+        <link rel="stylesheet" type="text/css" href="{{asset " built/screen.css"}}" />
+
+        {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
+        it should always be the last tag before the closing head tag --}}
+        {{ghost_head}}
+
+    </head>{{!-- The tag above means: insert everything in this file
+    into the {body} of the default.hbs template --}}
+
+    <div class="site-header-content outer{{#match @custom.header_style " Left aligned"}} left-aligned{{/match}}{{#unless
+        @custom.show_publication_cover}}{{#match @custom.header_style "Hidden" }} no-content{{/match}}{{/unless}}">
+
+        {{#if @custom.show_publication_cover}}
         {{#if @site.cover_image}}
-            {{!-- This is a responsive image, it loads different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-            <img class="site-header-cover"
-                srcset="{{img_url @site.cover_image size="s"}} 300w,
-                        {{img_url @site.cover_image size="m"}} 600w,
-                        {{img_url @site.cover_image size="l"}} 1000w,
-                        {{img_url @site.cover_image size="xl"}} 2000w"
-                sizes="100vw"
-                src="{{img_url @site.cover_image size="xl"}}"
-                alt="{{@site.title}}"
-            />
+        {{!-- This is a responsive image, it loads different sizes depending on device
+        https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
+        <img class="site-header-cover" srcset="{{img_url @site.cover_image size=" s"}} 300w, {{img_url @site.cover_image
+            size="m" }} 600w, {{img_url @site.cover_image size="l" }} 1000w, {{img_url @site.cover_image size="xl" }}
+            2000w" sizes="100vw" src="{{img_url @site.cover_image size=" xl"}}" alt="{{@site.title}}" />
         {{/if}}
-    {{/if}}
+        {{/if}}
 
-    {{#match @custom.header_style "!=" "Hidden"}}
-        <div class="site-header-inner inner">
+
+        {{#match @custom.header_style "!=" "Hidden"}}
+        <div class="site-header-inner ">
             {{#match @custom.navigation_layout "Logo on cover"}}
-                {{#if @site.logo}}
-                    <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    <h1 class="site-title">{{@site.title}}</h1>
-                {{/if}}
+            {{#if @site.logo}}
+            <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
+            {{else}}
+            {{/if}}
             {{/match}}
             {{#if @site.description}}
-                <p class="site-description">{{@site.description}}</p>
+            <p class="site-description">{{@site.description}}</p>
             {{/if}}
         </div>
-    {{/match}}
-
-</div>
-
-{{!-- The main content area --}}
-<main id="site-main" class="site-main outer">
-<div class="inner posts">
-
-    <div class="post-feed">
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            {{> "post-card"}}
-        {{/foreach}}
+        {{/match}}
     </div>
+    {{!-- The main content area --}}
+    <main class="site-main">
 
-    {{pagination}}
+        <h1 class="subtitle">sectors</h1>
 
+
+
+
+        <div class="inner posts">
+
+            <div class="post-feed">
+                {{#get "tags" limit="4"}}
+                {{#foreach tags}}
+                <div class>
+                    {{> "category-card"}}
+                    <a href="{{url}}" class="category-link">{{name}}</a>
+                </div>
+                {{/foreach}}
+                {{/get}}
+            </div>
+
+            {{pagination}}
+
+        </div>
+
+        <div class = "center" style="gap: 15px">
+            <button type="button">see more</button>
+            <button type="button">get custom reports and dashboards</button>
+        </div>
+
+
+        <h1 class="subtitle">our partners</h1>
+
+        <div class="our-partners">
+            <img class="our-partners" src="./assets/images/shape_circle.png" />
+
+            <img class="our-partners" src="./assets/images/shape_triangle.png" />
+
+            <img class="our-partners" src="./assets/images/shape_rectangle.png" />
+
+            <img class="our-partners" src="./assets/images/shape_triangle.png" />
+
+            <img class="our-partners" src="./assets/images/shape_circle.png" />
+        </div>
+
+        <h1 class="subtitle">our work</h1>
+        <h1 class="our-work">Não há mais realidade nem viabilidade de transformarmos o mundo sem dados e informações de
+            qualidade. Desenvolver soluções inovadoras e sustentáveis para nossos clientes é a missão primordial da
+            Verstatis. Dados ambientais e estudos de mercado brasileiro agora em um local só, para empresas nacionais e
+            internacionais comprometidas com práticas ESG de maneira segura e simples.</h1>
+
+
+
+        <div style="display: flex; justify-content: center; gap: 33px">
+
+            <div style="width: 200px;">
+                <img style="width: 100px; height: 55px;" src="./assets/images/shape_circle.png" />
+
+                <h3 style="font-size: 16px; text-align: center">Relatórios ESG Personalizados</h3>
+
+                <ul
+                    style="color: #757575;text-align: baseline; font-size: 12px; font-family: Inter; font-weight: 500; line-height: 18px; word-wrap: break-word;">
+                    <li>Fornecemos relatórios detalhados em quatro setores-chave (agro, resíduos, água e emissões)
+                        adaptados às necessidades específicas de cada cliente.</li>
+                    <li>Enfatizamos a transparência e a conformidade com práticas ambientais, sociais e de governança,
+                        permitindo que os investidores tomem decisões informadas.</li>
+                </ul>
+            </div>
+
+            <div style="width: 200px;">
+                <img style="width: 100px; height: 55px;" src="./assets/images/shape_circle.png" />
+
+                <h3 style="font-size: 16px; text-align: center">Estudos de Mercado e Diagnósticos Personalizados</h3>
+
+                <ul
+                    style="color: #757575; text-align: baseline; font-size: 12px; font-family: Inter; font-weight: 500; line-height: 18px; word-wrap: break-word;">
+                    <li>Oferecemos análises de mercado abrangentes e diagnósticos personalizados para os setores
+                        prioritários, identificando oportunidades de investimento e avaliando riscos associados.</li>
+                    <li>Apresentamos insights estratégicos para apoiar decisões sustentáveis e alinhar as metas
+                        empresariais com os princípios ESG.</li>
+                </ul>
+            </div>
+
+            <div style="width: 200px; text-align: center;">
+                <img style="width: 100px; height: 55px;" src="./assets/images/shape_circle.png" />
+
+                <h3 style="font-size: 16px; text-align: center">Inteligência Artificial em Dashboards Setoriais</h3>
+                <ul
+                    style="color: #757575;text-align: baseline; font-size: 12px; font-family: Inter; font-weight: 500; line-height: 18px; word-wrap: break-word;">
+                    <li>Utilizamos inteligência artificial avançada para criar dashboards interativos e intuitivos em
+                        cada setor (agro, resíduos, água e emissões).</li>
+                    <li>Facilitamos a visualização e interpretação de dados complexos, proporcionando uma compreensão
+                        aprofundada do desempenho ambiental e sustentável das empresas.</li>
+                </ul>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="center">
+        <button type="button" >get in touch</button>
 </div>
-</main>
+    </main>

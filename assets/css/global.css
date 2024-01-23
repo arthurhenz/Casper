@@ -174,7 +174,8 @@ samp {
 }
 kbd {
     padding: 3px 5px;
-    font-family: var(--font-mono);
+    font-family: "Inter";
+
     font-size: 1.5rem;
     background: #f6f8fa;
     border: 1px solid rgba(124, 139, 154, 0.25);
@@ -395,7 +396,7 @@ blockquote cite a {
 }
 
 a {
-    color: #15171A;
+    color: #15171a;
     text-decoration: none;
 }
 
