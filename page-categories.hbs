@@ -1,0 +1,35 @@
+{{!< default}} {{!-- The tag above means: insert everything in this file into the {body} tag of the default.hbs template
+    --}} {{!-- Everything inside the #post block pulls data from the page --}} 
+
+    <main id="site-main" class="site-main outer">
+
+    <div class="inner posts post-feed" style="padding-top: 50px;">
+
+
+        <section class="post-card post-card-large">
+
+            <div class="post-card-content post-card-content-link">
+                <header class="post-card-header">
+                    <h2 class="post-card-title">All the categories</h2>
+                </header>
+            </div>
+
+
+
+        </section>
+
+        {{#get "tags"}}
+
+        {{#foreach tags}}
+        {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+        <div>
+            {{> "category-card"}}
+            <a href="{{url}}" class="category-link">{{name}}</a>
+        </div>
+
+        {{/foreach}}
+
+        {{/get}}
+
+
+        </main>

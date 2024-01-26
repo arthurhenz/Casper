@@ -35,9 +35,7 @@ which templates loop over to generate a list of posts. --}}
     </a>
     {{/if}}
 
-    <div class="post-card-content">
 
-        <a class="post-card-content-link" href="{{url}}">
             <header class="post-card-header">
                 <div class="post-card-tags">
                     {{#primary_tag}}
@@ -61,7 +59,6 @@ which templates loop over to generate a list of posts. --}}
             {{#if excerpt}}
                 <div class="post-card-excerpt">{{excerpt}}</div>
             {{/if}}
-        </a>
 
         <footer class="post-card-meta">
             {{#if reading_time}}
@@ -72,6 +69,5 @@ which templates loop over to generate a list of posts. --}}
             {{/if}}
         </footer>
 
-    </div>
 
 </article>

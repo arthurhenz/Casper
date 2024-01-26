@@ -67,7 +67,7 @@
             <div class="post-feed">
                 {{#get "tags" limit="4"}}
                 {{#foreach tags}}
-                <div class>
+                <div>
                     {{> "category-card"}}
                     <a href="{{url}}" class="category-link">{{name}}</a>
                 </div>
@@ -80,13 +80,18 @@
         </div>
 
         <div class="center" style="gap: 15px">
+
             
-        <script>function redirectToCategories() {
-            window.location.href = "http://localhost:2368/tags"
-        </script>
-            <button onClick = "redirectToCategories()" type="button">see more</button>
+            <a href="/categories/" class="category-link">{{name}}
+
+                <button type="button">see more</button>
+            </a>
             <button type="button">get custom reports and dashboards</button>
         </div>
+
+
+
+
 
 
         <h1 class="subtitle">our partners</h1>
@@ -141,7 +146,7 @@
                 </ul>
             </div>
 
-            <div style="width: 200px; text-align: center;">
+            <div style="width: 200px;">
                 <img style="width: 100px; height: 55px;" src="./assets/images/shape_circle.png" />
 
                 <h3 style="font-size: 16px; text-align: center">Inteligência Artificial em Dashboards Setoriais</h3>
