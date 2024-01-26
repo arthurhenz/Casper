@@ -1101,25 +1101,6 @@ h1.subtitle {
         transition-delay: 0.4s;
     }
 }
-.post-feed {
-    display: flex;
-    display: grid;
-    gap: 10vmin 11vmin;
-    grid-template-columns: repeat(4, 1fr);
-    padding-left: 10%;
-    padding-right: 10%;
-    position: relative;
-}
-
-.post-categories {
-    display: flex;
-    display: grid;
-    gap: 3.8vmin 4vmin;
-    grid-template-columns: repeat(6, 1fr);
-    padding-left: 10%;
-    padding-right: 10%;
-    position: relative;
-}
 
 div.our-partners {
     display: flex;
@@ -1143,15 +1124,35 @@ h1.our-work {
 :is(.tag-template, .author-template) .post-feed {
     margin-top: 4vmin;
 }
+
+.post-feed {
+    display: flex;
+    display: grid;
+    gap: 3vmin 12vmin;
+    grid-template-columns: repeat(4, 1fr);
+    padding-left: 10%;
+    padding-right: 10%;
+    position: relative;
+}
+
+.post-categories {
+    display: flex;
+    display: grid;
+    row-gap: 32px;
+    padding-left: 10%;
+    padding-right: 10%;
+    position: relative;
+}
+
+
 @media (max-width: 991px) {
-    .post-feed {
+    .post-feed, post-categories {
         grid-template-columns: 1fr 1fr;
     }
 }
 @media (max-width: 767px) {
-    .post-feed {
+    .post-feed, post-categories {
         grid-gap: 40px;
-        grid-template-columns: 1fr;
     }
 }
 .post-card {
@@ -1251,6 +1252,7 @@ h1.our-work {
     font-size: 2.6rem;
     font-weight: 800;
     line-height: 1.2;
+    padding-bottom: 16px;
     margin: 0;
 }
 .post-card-content-link:hover .post-card-title {
