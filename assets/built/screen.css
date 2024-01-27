@@ -485,6 +485,7 @@ h6 {
 
 h1.subtitle {
     font-size: 24px;
+    padding-top: 24px;
     padding-bottom: 24px;
     display: flex;
     justify-content: center;
@@ -1104,13 +1105,28 @@ h1.subtitle {
 
 div.our-partners {
     display: flex;
+    overflow-x: auto;
     gap: 30px;
     justify-content: center;
-    padding-bottom: 48px;
+    padding-bottom: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+@media (max-width: 1000px) {
+    our-partners::-webkit-scrollbar {
+        width: 0;
+    }
+
+    div.our-partners {
+        justify-content: start;
+        padding-bottom: 30px;
+    }
 }
 
 img.our-partners {
     size: 300px;
+    text-align: center;
 }
 
 h1.our-work {
@@ -1144,14 +1160,15 @@ h1.our-work {
     position: relative;
 }
 
-
 @media (max-width: 991px) {
-    .post-feed, post-categories {
+    .post-feed,
+    post-categories {
         grid-template-columns: 1fr 1fr;
     }
 }
 @media (max-width: 767px) {
-    .post-feed, post-categories {
+    .post-feed,
+    post-categories {
         grid-gap: 40px;
     }
 }
